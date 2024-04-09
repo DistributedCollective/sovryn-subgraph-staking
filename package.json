@@ -1,0 +1,43 @@
+{
+  "name": "subgraph-template",
+  "version": "0.0.1",
+  "scripts": {
+    "create": "graph create DistributedCollective/subgraph-template --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create DistributedCollective/subgraph-template --node http://127.0.0.1:8020",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy DistributedCollective/subgraph-template --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-local": "graph deploy DistributedCollective/subgraph-template --ipfs http://localhost:5001 --node http://127.0.0.1:8020 --version-label v0.0.1",
+    "dev": "npm run codegen && npm run deploy-local -- --version-label v0.0.1",
+    "dev:no-build": "npm run codegen && npm run deploy-local",
+    "dev:nodemon": "node_modules/nodemon/bin/nodemon.js --exec 'npm run dev' --ignore build/ --ignore generated/ --ignore data/ --ext 'ts,json,graphql,yaml'",
+    "dev:nodemon:no-build": "node_modules/nodemon/bin/nodemon.js --exec 'npm run dev:no-build' --ignore build/ --ignore generated/ --ignore data/ --ext 'ts,json,graphql,yaml'",
+    "lint": "npx prettier src/",
+    "lint:fix": "npx prettier -w src/",
+    "scaffold": "node utils/scaffoldFromAbi.js",
+    "cd": "npm run create-local && npm run deploy-local -- --version-label",
+    "prepare": "husky install",
+    "prepare:testnet": "sh ./scripts/prepare_testnet.sh",
+    "prepare:mainnet": "sh ./scripts/prepare_mainnet.sh",
+    "test-start-block": "node -r esm utils/startFromLaterBlock.js",
+    "dev:up": "docker compose --env-file .env.dev up -d",
+    "dev:down": "docker compose --env-file .env.dev down"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.69.1",
+    "@graphprotocol/graph-ts": "^0.34.0",
+    "@protofire/subgraph-toolkit": "^0.1.2",
+    "commander": "^8.3.0",
+    "dotenv": "^16.0.0",
+    "husky": "^7.0.4",
+    "js-yaml": "^4.1.0",
+    "mustache": "^4.2.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.1"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "js-yaml": "^4.1.0",
+    "matchstick-as": "^0.3.0"
+  }
+}

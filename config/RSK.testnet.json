@@ -1,0 +1,11 @@
+{
+    "network": "testnet",
+    "node": {
+        "address": "https://testnet.sovryn.app/rpc",
+        "log_level": "debug"
+    },
+    "ERC20": {
+      "address":"0x9D1464Af4c1963835c325024e823ef0Ac3622Ec1",
+      "startBlock": 4992978
+    }
+}

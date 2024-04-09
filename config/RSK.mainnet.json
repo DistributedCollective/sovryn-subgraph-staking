@@ -1,0 +1,11 @@
+{
+  "network":"mainnet",
+  "node": {
+    "address":"https://RSK_RPC_ENDPOING_WITH_GET_LOGS_ENABLED",
+    "log_level":"debug"
+  },
+  "ERC20": {
+    "address":"0xefc78fc7d48b64958315949279ba181c2114abbd",
+    "startBlock": 0
+  }
+}

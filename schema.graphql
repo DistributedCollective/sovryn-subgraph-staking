@@ -1,0 +1,61 @@
+"""
+Transaction data, including hash and timestamp
+"""
+type Transaction @entity {
+  """
+  ID is transaction hash
+  """
+  id: ID!
+  blockNumber: Int!
+  """
+  The timestamp the transaction was confirmed
+  """
+  timestamp: Int!
+  gasPrice: BigInt!
+  """
+  The index of this transaction within the block
+  """
+  index: Int!
+  """
+  The account that initiated this transaction. This must be an Account and not a Contract.
+  """
+  from: User!
+  """
+  The contract the user interacted with
+  """
+  to: Bytes
+  value: BigInt!
+  gasLimit: BigInt!
+  functionSignature: String!
+}
+
+type User @entity {
+  id: ID!
+  createdAt: Int!
+}
+
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+  timestamp: BigInt!
+  emittedBy: Bytes! #address
+  transaction: Transaction!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+  timestamp: BigInt!
+  emittedBy: Bytes! #address
+  transaction: Transaction!
+}
