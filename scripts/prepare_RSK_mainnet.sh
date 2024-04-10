@@ -7,7 +7,6 @@ echo "Preparing subgraph for ${yellow}$NETWORK${reset} network" && echo;
 npx mustache config/RSK.mainnet.json subgraph.template.yaml > subgraph.yaml;
 echo "File: ${green}subgraph.yaml${reset} has been mustached";
 npx mustache config/RSK.mainnet.json docker-compose.template.yml > docker-compose.yml;
-npx mustache config/RSK.mainnet.json src/templates/blockNumbers.template.ts > src/templates/blockNumbers.ts;
 npx mustache config/RSK.mainnet.json src/constants.template.ts > src/constants.ts;
 
 echo "File: ${green}docker-compose.yml${reset} has been mustached";

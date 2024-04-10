@@ -4,10 +4,10 @@ yellow=`tput setaf 3`
 green=`tput setaf 2`
 reset=`tput sgr0`
 echo "Preparing subgraph for ${yellow}$NETWORK${reset} network" && echo;
-npx mustache config/RSK.testnet.json subgraph.template.yaml > subgraph.yaml;
+npx mustache config/BOB.testnet.json subgraph.template.yaml > subgraph.yaml;
 echo "File: ${green}subgraph.yaml${reset} has been mustached";
-npx mustache config/RSK.testnet.json docker-compose.template.yml > docker-compose.yml;
+npx mustache config/BOB.testnet.json docker-compose.template.yml > docker-compose.yml;
 echo "File: ${green}docker-compose.yml${reset} has been mustached";
-npx mustache config/RSK.testnet.json src/constants.template.ts > src/constants.ts;
+npx mustache config/BOB.testnet.json src/constants.template.ts > src/constants.ts;
 
 echo "File: ${green}src/config/contracts.ts${reset} has been mustached";

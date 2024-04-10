@@ -76,7 +76,7 @@ export function handleTokensStaked(event: TokensStakedEvent): void {
   const totalStaked = decimal.fromBigInt(event.params.totalStaked, DEFAULT_DECIMALS)
   let vestingContract = VestingContract.load(event.params.staker.toHexString())
   /** Gensis Vesting contracts did not emit a VestingCreated event. Therefore, they need to be created from here. **/
-  const isGenesisContract =
+  const isGenesisContract = CHAIN == 'rsk' &&
     vestingContract == null &&
     event.block.number <= GENESIS_VESTING_END &&
     event.block.number >= GENESIS_VESTING_START &&
