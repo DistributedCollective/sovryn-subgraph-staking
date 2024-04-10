@@ -5,28 +5,94 @@ schema:
   file: ./schema.graphql
 
 dataSources:
-
   - kind: ethereum/contract
-    name: ERC20
+    name: Staking
     network: {{network}}
     source:
-      address: '{{ERC20.address}}'
-      abi: ERC20
-      startBlock: {{ERC20.startBlock}}
+      address: '{{contracts.Staking.address}}'
+      abi: Staking
+      startBlock: {{contracts.Staking.startBlock}}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Approval
-        - Transfer
+        - DelegateChanged
+        - DelegateStakeChanged
+        - ExtendedStakingDuration
+        - OwnershipTransferred
+        - TokensStaked
+        - TokensUnlocked
+        - TokensWithdrawn
+        - VestingTokensWithdrawn
+        - StakingWithdrawn
+        - V2TokensStaked
+        - V2Stake
+        - V2ExtendedStakingDuration
       abis:
-        - name: ERC20
-          file: ./abi/ERC20.json
+        - name: Staking
+          file: ./abi/Staking.json
+        - name: VestingContract
+          file: ./abi/VestingLogic.json
       eventHandlers:
-        
-        - event: Approval(indexed address,indexed address,uint256)
-          handler: handleApproval
-        - event: Transfer(indexed address,indexed address,uint256)
-          handler: handleTransfer
-      file: ./src/mappings/ERC20.ts
+        - event: DelegateChanged(indexed address,uint256,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: ExtendedStakingDuration(indexed address,uint256,uint256,uint256)
+          handler: handleExtendedStakingDuration
+        - event: TokensStaked(indexed address,uint256,uint256,uint256)
+          handler: handleTokensStaked
+        - event: TokensWithdrawn(indexed address,address,uint256)
+          handler: handleTokensWithdrawn
+        - event: StakingWithdrawn(indexed address,uint256,uint256,indexed address,bool)
+          handler: handleStakingWithdrawn
+        - event: DelegateStakeChanged(indexed address,uint256,uint256,uint256)
+          handler: handleDelegateStakeChanged
+      file: ./src/mappings/Staking.ts
+
+  - kind: ethereum/contract
+    name: VestingRegistryProxy
+    network: {{network}}
+    source:
+      address: '{{contracts.VestingRegistryProxy.address}}'
+      abi: VestingProxy
+      startBlock: {{contracts.VestingRegistryProxy.startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TeamVestingCreated
+        - TokensStaked
+        - VestingCreated
+      abis:
+        - name: VestingProxy
+          file: ./abi/VestingProxy.json
+        - name: VestingContract
+          file: ./abi/VestingLogic.json
+      eventHandlers:
+        - event: TeamVestingCreated(indexed address,address,uint256,uint256,uint256,uint256)
+          handler: handleTeamVestingCreatedProxy
+        - event: VestingCreated(indexed address,address,uint256,uint256,uint256,uint256)
+          handler: handleVestingCreatedProxy
+      file: ./src/mappings/VestingRegistry.ts
+
+templates:
+  - kind: ethereum/contract
+    name: VestingContract
+    network: {{network}}
+    source:
+      abi: VestingContract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - VestingContract
+      abis:
+        - name: VestingContract
+          file: ./abi/VestingLogic.json
+      eventHandlers:
+
+        - event: VotesDelegated(indexed address,address)
+          handler: handleVotesDelegated
+      file: ./src/mappings/Vesting.ts

@@ -1,11 +1,50 @@
 {
-  "network":"mainnet",
+  "network": "mainnet",
+  "chain": "rsk",
   "node": {
-    "address":"https://RSK_RPC_ENDPOING_WITH_GET_LOGS_ENABLED",
-    "log_level":"debug"
+      "address": "https://mainnet-dev.sovryn.app/rpc",
+      "log_level": "debug",
+      "graph_graphql_query_timeout": 10,
+      "graph_sql_statement_timeout": 10,
+      "graph_graphql_max_depth": 16,
+      "graph_graphql_max_complexity": 1500000,
+      "restart": "always"
   },
-  "ERC20": {
-    "address":"0xefc78fc7d48b64958315949279ba181c2114abbd",
-    "startBlock": 0
+  "blocks": {
+    "genesisVestingBlocks": {
+      "start": 3114728,
+      "end": 3257234
+    }
+  },
+  "adminContracts": "[0x924f5ad34698Fd20c90Fe5D5A8A0abd3b42dc711, 0x05f4f068DF59a5aA7911f57cE4f41ebFBcB8E247, 0x51C754330c6cD04B810014E769Dab0343E31409E]",
+  "contracts": {
+    "VestingRegistry1": {
+      "address": "0x80b036ae59b3e38b573837c01bb1db95515b7e6b",
+      "startBlock": 3100287
+    },
+    "VestingRegistry2": {
+        "address": "0x0a9bDbf5e104a30fb4c99f6812FB85B60Fd8D372",
+        "startBlock": 3159211
+    },
+    "VestingRegistry3": {
+        "address": "0x14F3FE332e21Ef3f5d244C45C8D5fbFcEF2FB5c9",
+        "startBlock": 3159211
+    },
+    "VestingRegistry4": {
+        "address": "0xc47E977d30fa553412897d0B1f97247F635c09b2",
+        "startBlock": 2851598
+    },
+    "VestingRegistryProxy": {
+        "address": "0xe24ABdB7DcaB57F3cbe4cBDDd850D52F143eE920",
+        "startBlock": 3769649
+    },
+    "VestingRegistryFish": {
+        "address": "0x036ab2DB0a3d1574469a4a7E09887Ed76fB56C41",
+        "startBlock": 3629167
+    },
+    "Staking": {
+        "address": "0x5684a06CaB22Db16d901fEe2A5C081b4C91eA40e",
+        "startBlock": 3100263
+    }
   }
 }

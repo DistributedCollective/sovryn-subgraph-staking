@@ -1,11 +1,50 @@
 {
-    "network": "testnet",
-    "node": {
-        "address": "https://testnet.sovryn.app/rpc",
-        "log_level": "debug"
-    },
-    "ERC20": {
-      "address":"0x9D1464Af4c1963835c325024e823ef0Ac3622Ec1",
-      "startBlock": 4992978
+  "network": "testnet",
+  "chain": "rsk",
+  "node": {
+      "address": "https://testnet.sovryn.app/rpc",
+      "log_level": "info",
+      "graph_graphql_query_timeout": 10,
+      "graph_sql_statement_timeout": 10,
+      "graph_graphql_max_depth": 16,
+      "graph_graphql_max_complexity": 1500000,
+      "restart": "always"
+  },
+  "blocks": {
+    "genesisVestingBlocks": {
+      "start": 1617004,
+      "end": 1731114
     }
+  },
+  "adminContracts": "[]",
+  "contracts": {
+    "Staking": {
+      "address": "0xc37A85e35d7eECC82c4544dcba84CF7E61e1F1a3",
+      "startBlock": 1606434
+    },
+    "VestingRegistry1": {
+      "address": "0x80ec7ADd6CC1003BBEa89527ce93722e1DaD5c2a",
+      "startBlock": 1606459
+    },
+    "VestingRegistry2": {
+      "address": "0x310006E356b0818C3Eaf86a9B2f13013d4691a1c",
+      "startBlock": 1657821
+    },
+    "VestingRegistry3": {
+      "address": "0x52E4419b9D33C6e0ceb2e7c01D3aA1a04b21668C",
+      "startBlock": 1802584
+    },
+    "FourYearVesting": {
+      "address": "0x2AC0b13c174f03B4bE8C174Daf9d86C05b21496e",
+      "startBlock": 2851598
+    },
+    "VestingRegistryProxy": {
+      "address": "0x09e8659B6d204C6b1bED2BFF8E3F43F834A5Bbc4",
+      "startBlock": 2197944
+    },
+    "VestingRegistryFish": {
+      "address": "0xFd8ea2e5e8591fA791d44731499cDF2e81CD6a41",
+      "startBlock": 2104493
+    }
+  }
 }
