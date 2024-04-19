@@ -2,7 +2,7 @@
   "network": "optimism-sepolia",
   "chain": "bob",
   "node": {
-      "address": "https://sepolia-dencun.rpc.gobob.xyz",
+      "address": "https://testnet.rpc.gobob.xyz",
       "log_level": "info",
       "graph_graphql_query_timeout": 10,
       "graph_sql_statement_timeout": 10,
@@ -19,12 +19,12 @@
   "adminContracts": "[]",
   "contracts": {
     "Staking": {
-      "address": "0xe888470E4b7e077115edbBeC883CCD7C609AeE3c",
-      "startBlock": 577036
+      "address": "0x1139B088887237ed256687d9E1499275e37d9f2d",
+      "startBlock": 8240549
     },
     "VestingRegistryProxy": {
       "address": "0xe888470E4b7e077115edbBeC883CCD7C609AeE3c",
-      "startBlock": 577036
+      "startBlock": 8240549
     }
   }
 }
