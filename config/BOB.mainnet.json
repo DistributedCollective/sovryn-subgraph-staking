@@ -1,0 +1,30 @@
+{
+  "network": "optimism",
+  "chain": "bob",
+  "node": {
+      "address": "https://rpc.gobob.xyz",
+      "log_level": "info",
+      "graph_graphql_query_timeout": 10,
+      "graph_sql_statement_timeout": 10,
+      "graph_graphql_max_depth": 16,
+      "graph_graphql_max_complexity": 1500000,
+      "restart": "always"
+  },
+  "blocks": {
+    "genesisVestingBlocks": {
+      "start": 0,
+      "end": 0
+    }
+  },
+  "adminContracts": "[]",
+  "contracts": {
+    "Staking": {
+      "address": "0x5fA95212825a474E2C75676e8D833330F261CaeD",
+      "startBlock": 452599
+    },
+    "VestingRegistryProxy": {
+      "address": "0x5fA95212825a474E2C75676e8D833330F261CaeD",
+      "startBlock": 452599
+    }
+  }
+}
