@@ -1,0 +1,30 @@
+{
+  "network": "arbitrum-one",
+  "chain": "bitlayer",
+  "node": {
+      "address": "https://testnet-rpc.bitlayer.org",
+      "log_level": "info",
+      "graph_graphql_query_timeout": 10,
+      "graph_sql_statement_timeout": 10,
+      "graph_graphql_max_depth": 16,
+      "graph_graphql_max_complexity": 1500000,
+      "restart": "always"
+  },
+  "blocks": {
+    "genesisVestingBlocks": {
+      "start": 0,
+      "end": 0
+    }
+  },
+  "adminContracts": "[]",
+  "contracts": {
+    "Staking": {
+      "address": "0x8AC7f31B587A2369C985b05627873cFA50C70a3C",
+      "startBlock": 3950337
+    },
+    "VestingRegistryProxy": {
+      "address": "0x4d9dB3FA7007e59Ac93e5FCc1bE872182d2EE07c",
+      "startBlock": 3950337
+    }
+  }
+}

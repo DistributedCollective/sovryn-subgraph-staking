@@ -21,6 +21,7 @@
     "prepare:RSK:mainnet": "sh ./scripts/prepare_RSK_mainnet.sh",
     "prepare:BOB:testnet": "sh ./scripts/prepare_BOB_testnet.sh",
     "prepare:BOB:mainnet": "sh ./scripts/prepare_BOB_mainnet.sh",
+    "prepare:BITLAYER:testnet": "sh ./scripts/prepare_BITLAYER_testnet.sh",
     "test-start-block": "node -r esm utils/startFromLaterBlock.js",
     "dev:up": "docker compose --env-file .env.dev up -d",
     "dev:down": "docker compose --env-file .env.dev down"
